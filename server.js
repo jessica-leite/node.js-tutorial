@@ -3,9 +3,12 @@ console.log("Hey you");
 
 const os = require('os');
 const path = require('path');
-const math = require('./math');
+const { add, subtract, multiply, divide } = require('./math');
 
-console.log(math.add(2,3));
+console.log(add(2,4));
+console.log(subtract(2,4));
+console.log(multiply(2,4));
+console.log(divide(2,4));
 
 // console.log(os.type())
 // console.log(os.version())
