@@ -9,6 +9,12 @@ fs.readFile(path.join(__dirname, 'files', 'starter.txt'), 'utf8', (err, data) =>
 
 console.log('Just to see');
 
+fs.writeFile(path.join(__dirname, 'files', 'reply.txt'), 'Nice to meet you.', (err) => {
+    if(err) throw err;
+
+    console.log('Write complete');
+});
+
 //exit on uncaught errors
 process.on('uncaughtException', err => {
     console.error(`There was an uncaught error: ${err}`);
