@@ -1,31 +1,34 @@
-const fs = require('fs');
+const fsPromises = require('fs').promises;
 const path = require('path');
 
-fs.readFile(path.join(__dirname, 'files', 'starter.txt'), 'utf8', (err, data) => {
-    if(err) throw err;
+const fileOps = async () => {
+    try{
+        const data = await fsPromises.readFile(path.join(__dirname, 'files', 'starter.txt'), 'utf8');
+        console.log(data);
+    } catch (err) {
+        console.error(err);
+    }
+}
 
-    console.log(data);
-});
+fileOps();
 
-console.log('Just to see');
+// fs.writeFile(path.join(__dirname, 'files', 'reply.txt'), 'Nice to meet you.', (err) => {
+//     if(err) throw err;
 
-fs.writeFile(path.join(__dirname, 'files', 'reply.txt'), 'Nice to meet you.', (err) => {
-    if(err) throw err;
+//     console.log('Write complete');
 
-    console.log('Write complete');
-
-    fs.appendFile(path.join(__dirname, 'files', 'reply.txt'), '\n\nYes it is.', (err) => {
-        if(err) throw err;
+//     fs.appendFile(path.join(__dirname, 'files', 'reply.txt'), '\n\nYes it is.', (err) => {
+//         if(err) throw err;
     
-        console.log('Append complete');
+//         console.log('Append complete');
 
-        fs.rename(path.join(__dirname, 'files', 'reply.txt'), path.join(__dirname, 'files', 'newReply.txt'), (err) => {
-            if(err) throw err;
+//         fs.rename(path.join(__dirname, 'files', 'reply.txt'), path.join(__dirname, 'files', 'newReply.txt'), (err) => {
+//             if(err) throw err;
         
-            console.log('Rename complete');
-        });
-    });
-});
+//             console.log('Rename complete');
+//         });
+//     });
+// });
 
 
 
